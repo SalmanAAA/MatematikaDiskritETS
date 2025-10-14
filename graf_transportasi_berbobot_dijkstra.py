@@ -67,8 +67,8 @@ nx.draw(G, pos, with_labels=True, node_color='lightblue', font_weight='bold', no
 edges_path = list(zip(rute_terpendek, rute_terpendek[1:]))
 nx.draw_networkx_edges(G, pos, edgelist=edges_path, edge_color='red', width=3)
 
-# Tampilkan bobot jarak
-edge_labels = nx.get_edge_attributes(G, 'weight')
+# --- Label bobot dengan satuan km ---
+edge_labels = {edge: f"{weight} km" for edge, weight in nx.get_edge_attributes(G, 'weight').items()}
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=9)
 
 plt.title(f"Graf Transportasi dan Rute Terpendek {asal} → {tujuan}")
